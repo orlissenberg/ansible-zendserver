@@ -32,6 +32,28 @@ License
 
 MIT
 
+Notes
+-----
+
+###Debian Jessie issue?
+
+Console 1:
+
+    tail -f /usr/local/zend/var/log/* /usr/local/zend/gui/lighttpd/logs/*
+
+Console 2:
+
+    /usr/local/zend/bin/zendctl.sh restart
+
+Error:
+
+    General error: 5 database is locked
+
+[Zend Server 8 not working on Debian Jessie](http://forums.zend.com/viewtopic.php?f=8&t=127198)
+
+    
+
+
 References
 ----------
 
