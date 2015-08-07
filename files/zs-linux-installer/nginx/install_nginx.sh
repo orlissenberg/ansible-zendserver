@@ -48,6 +48,10 @@ elif echo $CURRENT_OS | grep -q "Debian GNU/Linux 7"; then
 	OS=debian
 	OSRELEASE=wheezy
 	TYPE=deb
+elif echo $CURRENT_OS | grep -q "Debian GNU/Linux 8"; then
+	OS=debian
+	OSRELEASE=jessie
+	TYPE=deb
 elif echo $CURRENT_OS | grep -q "Ubuntu 10.04"; then
 	OS=ubuntu
 	OSRELEASE=lucid

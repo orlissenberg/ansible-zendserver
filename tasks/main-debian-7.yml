@@ -1,0 +1,12 @@
+---
+
+- name: Add repository
+  apt_repository: repo="deb http://repos.zend.com/zend-server/8.5/deb_ssl1.0 server non-free"
+  args:
+    state: present
+    update_cache: yes
+
+# http://nginx.org/en/linux_packages.html
+
+# 7.x
+# deb http://nginx.org/packages/OS/ wheezy nginx

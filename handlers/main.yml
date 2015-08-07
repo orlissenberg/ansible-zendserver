@@ -1,2 +1,5 @@
 ---
 # handlers file for zendserver
+
+- name: restart-zend-server
+  service: name=zend-server state=restarted

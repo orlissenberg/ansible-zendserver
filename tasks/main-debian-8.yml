@@ -1,0 +1,6 @@
+---
+
+# http://nginx.org/en/linux_packages.html
+
+# 8.x
+# deb http://nginx.org/packages/OS/ jessie nginx

@@ -3,19 +3,11 @@
 
 - apt_key: url=http://repos.zend.com/zend.key state=present
 
-- name: Add repository
-  apt_repository: repo="deb http://repos.zend.com/zend-server/8.0/deb_apache2.4 server non-free"
-  args:
-    state: present
-    update_cache: yes
+- include: main-debian-7.yml
+  when: ansible_distribution == 'Debian' and ansible_distribution_major_version == '7'
 
-- apt: name=zend-server-php-5.6 state=present
-
-# http://nginx.org/en/linux_packages.html
-# 7.x
-# deb http://nginx.org/packages/OS/ wheezy nginx
-# 8.x
-# deb http://nginx.org/packages/OS/ jessie nginx
+- apt: name=zend-server-php-5.6 state=present update_cache=yes
+  notify: restart-zend-server
 
 #- apt: name=zend-server-nginx-php-5.6 state=present
 
