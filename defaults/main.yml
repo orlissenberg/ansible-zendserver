@@ -1,12 +1,2 @@
 ---
 # defaults file for zendserver
-
-percona_install: False
-percona_version: "2.2.15"
-percona_build_path: "/tmp/percona-toolkit-{{ percona_version }}"
-
-mysql_benchmark_install: False
-mysql_benchmark_build_path: "/tmp/dbt2-0.37.50.6"
-
-mysql_user: root
-mysql_group: root
