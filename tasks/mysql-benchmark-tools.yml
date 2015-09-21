@@ -1,0 +1,20 @@
+---
+
+# Install the MySQL Benchmark Tools
+
+#- get_url: url=http://downloads.mysql.com/source/dbt2-0.37.50.6.tar.gz mode=0644 sha256sum=﻿f5e44c225c3ea731b0d0f10de1ac550d535419f6498bf3bdb283d7e70df10318
+#  args:
+#    dest: /tmp/dbt2-0.37.50.6.tar.gz
+
+- shell: wget http://downloads.mysql.com/source/dbt2-0.37.50.6.tar.gz chdir=/tmp
+
+- unarchive: src=/tmp/dbt2-0.37.50.6.tar.gz dest=/tmp
+  args:
+    copy: no
+    group: "{{ mysql_group }}"
+    owner: "{{ mysql_user }}"
+
+- shell: ./configure --with-mysql chdir={{ mysql_benchmark_build_path }}
+- shell: make chdir={{ mysql_benchmark_build_path }}
+- shell: make check chdir={{ mysql_benchmark_build_path }}
+- shell: make install chdir={{ mysql_benchmark_build_path }}

@@ -1,0 +1,28 @@
+---
+
+# Install the Percona Toolkit
+# https://www.percona.com/doc/percona-toolkit/2.2/index.html
+
+- get_url: url=http://percona.com/get/percona-toolkit.tar.gz mode=0644
+  args:
+    dest: /tmp/percona-toolkit.tar.gz
+
+- unarchive: src=/tmp/percona-toolkit.tar.gz dest=/tmp
+  args:
+    copy: no
+    group: "{{ mysql_group }}"
+    owner: "{{ mysql_user }}"
+
+- apt: name={{ item }} state=present
+  with_items:
+    - perl
+
+# tar --exclude="*/*" -tf /tmp/percona-toolkit.tar.gz ﻿| sed -e "s/\///g" | head -1
+
+- shell: perl Makefile.PL chdir={{ percona_build_path }}
+- shell: make chdir={{ percona_build_path }}
+- shell: make test chdir={{ percona_build_path }}
+- shell: make install chdir={{ percona_build_path }}
+
+# Example command:
+# ﻿sudo /usr/local/bin/pt-summary
