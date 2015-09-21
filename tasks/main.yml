@@ -10,7 +10,3 @@
   notify: restart-zend-server
 
 #- apt: name=zend-server-nginx-php-5.6 state=present
-
-- include: mysql-benchmark-tools.yml
-  when: mysql_benchmark_install == true
-
